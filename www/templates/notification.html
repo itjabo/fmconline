@@ -1,0 +1,23 @@
+<ion-view view-title="List Notification">  
+  <ion-content>
+    <div class="bar bar-header item-input-inset" scroll="false">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input name="katakunci" id="katakunci" type="search" ng-model="katakunci" value="{{katakunci}}" ng-value="katakunci" ng-change="setkey(katakunci)" placeholder="Id atau nama site">
+      </label>
+      <button ng-model="katakunci" class="button button-positive" ng-click="cari()">
+        Search
+      </button>
+    </div>
+    <ion-list ng-show="suges">
+      <ion-item ng-model="keywords" class="item-content item-stable" ng-click="setKatakunci()">
+               {{keywords}}    
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item ng-repeat="lap in datas" href="#/app/notification/{{lap.id_laporan}}">
+        {{lap.site_id +', '+lap.tanggal}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

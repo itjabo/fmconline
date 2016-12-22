@@ -1,0 +1,24 @@
+<ion-view view-title="HOT PROMO"  hide-back-button="true" show-nav-bar="true">
+<!--<ion-view view-title="HOT PROMO" hide-nav-bar="false">-->
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="bar bar-header bar-assertive">
+      <h1 class="title">{{msisdn+' Point:'+ point}} </h1>
+    </div>
+    <div class="row"><h1>Browse</h1></div>
+    <div  ng-repeat="dts in datas">
+    <div class="row" ng-if="$even">
+      <div class="col col-50" ng-repeat="dt in [datas[$index],datas[$index+1]]" >
+        <!--ng-click="setPromo(dt.id_promo,dt.nama_toko,dt.judul,dt.deskripsi,dt.start_promo,dt.end_promo,dt.kategori,dt.gbr_promo)"-->
+        <img ng-if="dt.gbr_promo.length >1" src={{urlGbr+dt.gbr_promo}} style="width:100%; margin-bottom:0px; padding-bottom:0px;"  ng-click="detailPromo(dt.nama_toko, dt.judul, dt.deskripsi,dt.start_promo,dt.end_promo,dt.kategori,dt.gbr_promo)">
+        <ion-item class="item-text-wrap" ng-if="dt.gbr_promo.length >1" style="padding:1px 1px 1px 1px; margin-top:-5px;">
+          <h6>{{dt.min_desk}} </h6>
+        </ion-item>
+      </div>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

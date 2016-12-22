@@ -1,0 +1,174 @@
+<ion-view view-title="LAPORAN"  hide-back-button="true" show-nav-bar="true">
+<!--<ion-view view-title="HOT PROMO" hide-nav-bar="false">-->
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="bar bar-header bar-assertive">
+      <div class="row">
+            <div  class="col col-72">
+                <strong>{{nama}}, Pagi!</strong>
+            </div>
+            <div  class="col col-28 text-right">
+                <a ng-click="updateSite()">Update Site</a>
+            </div>
+      </div>
+    </div>
+    <div class="row"><h3>'</h3></div>	
+	<div >
+	{{'Sinyal: '+  signals.dbm+' operator:' +signals.operator +' cellid:'+ signals.cellID +' lac:'+ signals.lac +' tipe:'+ signals.tipe}}
+	</div>
+	<div class="card">
+	  <div class="item item-divider">
+		Buat Laporan
+	  </div>
+	  <div class="item item-text-wrap" style="border:0px 0px;padding:0px 0px;">
+		<div class="row" style="border:0px 0px;padding:0px 0px;"> 
+			<div  class="col col-75" ng-controller="laporanCtrl">
+				<!--<span ng-repeat="dts in datas">{{dts.site_id + ', '+ dts[0].nama_site +', '+ dts}}</span>-->
+                <span>{{site_id + ', '+ nama_site}}</span>
+			</div>
+			<div ng-show="site_id !== null" class="col col-25" style="border:0px 0px;padding:3px 0px 0px 0px;">
+				<label class="toggle" ng-click="buatLaporan()">
+				   <input type="checkbox" ng-model="checked" ng-checked="checked">
+				   <div class="track" >
+					 <div class="handle" ></div>
+				   </div>
+				</label>
+			</div>
+		</div>
+	  </div>
+	</div>
+      	<div class="card" ng-model="loadings" ng-show="loadings">
+			<div class="item item-text-wrap">
+				<div class="loader" style="width: {{progressval}}%;">
+					<p class="percent">{{progressval}}%</p>
+				</div>
+			</div>
+		</div>
+	<div ng-show="checked"  >	
+        <div class="row">
+            <div>
+            <strong>Site: <span ng-model="site_id" ng-bind="site_id"></span>, <span ng-model="nama_site" ng-bind="nama_site"></span></strong>
+            </div>
+        </div>
+		<div class="row">
+			<div class="col">
+			 <img ng-src="{{pathForImage(image)}}" style="width: 100%;" ng-click="takeImage()">
+			</div> 
+		</div>
+		<div class="row">
+		  <div class="col col-33">
+				<img src="{{pathForImage2(image2)}}" style="width: 100%;padding:0px 0px;" ng-click="browseImage(2)">
+		  </div>	  
+		  <div class="col col-33">
+				<img src="{{pathForImage3(image3)}}" style="width: 100%;padding:0px 0px;" ng-click="browseImage(3)">
+		  </div>	  
+		  <div class="col col-34">
+				<img ng-src="{{pathForImage4(image4)}}" style="width: 100%;padding:0px 0px;" ng-click="browseImage(4)">
+		  </div>
+		</div>
+	</div>
+	<div class="list card" ng-show="checked" style="border:0px 0px;padding:0px 0px;">
+	  <ion-card-header>
+		 <h4 style="padding-left:6px;"> Speed Test (mbps)</h4>
+	  </ion-card-header>
+	  <div class="item item-body" style="margin:0px -6px;padding:0px 0px;">		
+		<div class="row row-left" style="margin:0px -6px;padding:0px 0px;" >
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<label ng-model="warnaA" class="checkbox checkbox-{{warnaA}}">
+					  <input type="checkbox" ng-model="toggleA" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">2G:</span>
+						<input type="number" ng-model="dl2" ng-change="setdl2(dl2)" style="width:130%;padding:1px 1px;margin:1px 1px 1px -15px;border: 1px solid grey; border-radius: 3px;">
+				</li>
+			</div>
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<label ng-model="warnaB" class="checkbox checkbox-{{warnaB}}">
+					  <input type="checkbox" ng-model="toggleB" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">3G:</span>
+						<input type="number" ng-model="dl3"  ng-change="setdl3(dl3)"style="width:130%;padding:1px 1px;margin:1px 1px 1px -15px;border: 1px solid grey; border-radius: 3px;">
+				</li>
+			</div>
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<label ng-model="warnaC" class="checkbox checkbox-{{warnaC}}">
+					  <input type="checkbox" ng-model="toggleC" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">4G:</span>
+						<input type="number" ng-model="dl4" ng-change="setdl4(dl4)" style="width:130%;padding:1px 1px;margin:1px 1px 1px -15px;border: 1px solid grey; border-radius: 3px;">
+				</li>
+			</div>
+		</div>
+	  </div>
+	</div>
+	<div class="list card" ng-show="checked" style="border:0px 0px;padding:0px 0px;">
+	  <ion-card-header>
+		 <h4 style="padding-left:6px;"> Kualitas Sinyal</h4>
+	  </ion-card-header>
+	  <div class="item item-body" style="margin:0px -6px;padding:0px 0px;">		
+		<div class="row row-left" style="margin:0px -6px;padding:0px 0px;" >
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<img src="img/preloader.gif" style="width: 22px; height:22px ;vertical-align: middle;padding:0px 0px; margin:0px 15px 0px -40px;" ng-show="check2">
+					<label ng-model="warna2" class="checkbox checkbox-{{warna2}}" ng-hide="check2">
+					  <input type="checkbox" ng-model="toggle2" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">2G:</span><span ng-bind="sn2"></span>
+				</li>
+			</div>
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<img src="img/preloader.gif" style="width: 22px; height:22px ;vertical-align: middle;padding:0px 0px; margin:0px 15px 0px -40px;" ng-show="check3">
+					<label ng-model="warna3" class="checkbox checkbox-{{warna3}}" ng-hide="check3">
+					  <input type="checkbox" ng-model="toggle3" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">3G:</span><span ng-bind="sn3"></span>
+				</li>
+			</div>
+			<div class="col col-34 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<img src="img/preloader.gif" style="width: 22px; height:22px ;vertical-align: middle;padding:0px 0px; margin:0px 15px 0px -40px;" ng-show="check4">
+					<label ng-model="warna4" class="checkbox checkbox-{{warna4}}" ng-hide="check4">
+					  <input type="checkbox" ng-model="toggle4" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">4G:</span><span ng-bind="sn4"></span>
+				</li>
+			</div>
+		</div>
+	  </div>
+	</div>
+    <div class="list card" ng-show="checked" style="border:0px 0px;padding:0px 0px;">
+	  <ion-card-header>
+		 <h4 style="padding-left:6px;"> Catatan</h4>
+	  </ion-card-header>
+	  <div class="item item-body" style="margin:0px;padding:0px 0px;">		
+		<div class="row row" style="margin:0px;padding:0px 0px;">
+			<div class="col" >
+                <textarea rows="3" ng-model="catatan" ng-change="setCatatan(catatan)" style="width:100%;"></textarea>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!--<div  ng-repeat="dts in datas">
+    <div class="row" ng-if="$even">
+      <div class="col col-50" ng-repeat="dt in [datas[$index],datas[$index+1]]" >
+        <img ng-if="dt.gbr_promo.length >1" src={{urlGbr+dt.gbr_promo}} style="width:100%; margin-bottom:0px; padding-bottom:0px;"  ng-click="detailPromo(dt.nama_toko, dt.judul, dt.deskripsi,dt.start_promo,dt.end_promo,dt.kategori,dt.gbr_promo)">
+        <ion-item class="item-text-wrap" ng-if="dt.gbr_promo.length >1" style="padding:1px 1px 1px 1px; margin-top:-5px;">
+          <h6>{{dt.min_desk}} </h6>
+        </ion-item>
+      </div>
+    </div>
+    </div>-->
+  </ion-content>
+  <ion-footer-bar class="bar bar-positive"   >
+      <div class="button-bar" >
+        <button class="button icon-left ion-android-bookmark" ng-click="savefiles()"  ng-disabled="!checked">Save</button>
+        <button class="button icon-left ion-upload" ng-click="uploadImage()" ng-disabled="image === null || site_id === null">Upload</button>
+      </div>
+  </ion-footer-bar>
+</ion-view>

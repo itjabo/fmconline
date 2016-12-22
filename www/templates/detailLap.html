@@ -1,0 +1,103 @@
+<ion-view view-title="View Laporan">
+  <ion-content>
+	<div class="list card"  style="border:0px 0px;padding:0px 0px;" ng-repeat="dt in datas">
+	  <ion-card-header>
+		 <h4 style="padding-left:6px;"> {{dt.site_id+", By:"+dataUser[0].nama}}</h4>
+		 <h5 style="padding-left:6px;"> {{dt.tanggal}}</h5>
+	  </ion-card-header>
+	  <div class="item item-body" style="margin:0px -6px;padding:0px 0px;">	
+		<div class="row">
+			<div class="col">
+			 <img src="{{urlGbr+dt.foto}}" style="width: 100%;" >
+			</div> 
+		</div>
+      </div>
+	  <ion-card-header>
+		 <h4 style="padding-left:6px;"> Speed Test (mbps)</h4>
+	  </ion-card-header>
+	  <div class="item item-body" style="margin:0px -6px;padding:0px 0px;">		
+		<div class="row">
+		  <div class="col col-33">
+				<img src="{{urlGbr+dt.foto2}}" style="width: 100%;" >
+		  </div>
+		  <div class="col">
+				<img src="{{urlGbr+dt.foto3}}" style="width: 100%;" >
+		  </div>	  
+		  <div class="col col-34">
+				<img ng-src="{{urlGbr+dt.foto4}}" style="width: 100%;">
+		  </div>
+		</div>
+		<div class="row row-left" style="margin:0px -6px;padding:0px 0px;" >
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<label ng-model="warnaA" class="checkbox checkbox-{{warnaA}}">
+					  <input type="checkbox" ng-model="toggleA" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+                    <span style="margin-left:-15px;">2G:</span><span ng-bind="dt.dl_2g"></span>
+				</li>
+			</div>
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<label ng-model="warnaB" class="checkbox checkbox-{{warnaB}}">
+					  <input type="checkbox" ng-model="toggleB" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">3G:</span><span ng-bind="dt.dl_3g"></span>						
+				</li>
+			</div>
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<label ng-model="warnaC" class="checkbox checkbox-{{warnaC}}">
+					  <input type="checkbox" ng-model="toggleC" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">4G:</span><span ng-bind="dt.dl_4g"></span>
+				</li>
+			</div>
+		</div>
+	  </div>
+      <ion-card-header>
+		 <h4 style="padding-left:6px;"> Kualitas Sinyal</h4>
+	  </ion-card-header>
+	  <div class="item item-body" style="margin:0px -6px;padding:0px 0px;">		
+		<div class="row row-left" style="margin:0px -6px;padding:0px 0px;" >
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<img src="img/preloader.gif" style="width: 22px; height:22px ;vertical-align: middle;padding:0px 0px; margin:0px 15px 0px -40px;" ng-show="check2">
+					<label ng-model="warna2" class="checkbox checkbox-{{warna2}}" ng-hide="check2">
+					  <input type="checkbox" ng-model="toggle2" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">2G:</span><span ng-bind="dt.sinyal_2g"></span>
+				</li>
+			</div>
+			<div class="col col-33 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<img src="img/preloader.gif" style="width: 22px; height:22px ;vertical-align: middle;padding:0px 0px; margin:0px 15px 0px -40px;" ng-show="check3">
+					<label ng-model="warna3" class="checkbox checkbox-{{warna3}}" ng-hide="check3">
+					  <input type="checkbox" ng-model="toggle3" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">3G:</span><span ng-bind="dt.sinyal_3g"></span>
+				</li>
+			</div>
+			<div class="col col-34 col-center" style="margin:0px 0px;padding:0px 0px;">
+				<li class="item item-checkbox">
+					<img src="img/preloader.gif" style="width: 22px; height:22px ;vertical-align: middle;padding:0px 0px; margin:0px 15px 0px -40px;" ng-show="check4">
+					<label ng-model="warna4" class="checkbox checkbox-{{warna4}}" ng-hide="check4">
+					  <input type="checkbox" ng-model="toggle4" onclick="return false;" style="width:24px;height:24px;vertical-align: middle;padding:0px 0px;margin:0px 0px;">
+					</label>
+					<span style="margin-left:-15px;">4G:</span><span ng-bind="dt.sinyal_4g"></span>
+				</li>
+			</div>
+		</div>
+	  </div>
+	  <ion-card-header>
+		 <h4 style="padding-left:6px;"> Catatan</h4>
+	  </ion-card-header>
+	  <div class="item item-body" style="margin:0px;padding:0px 0px;">		
+		<div class="row row" style="margin:0px;padding:0px 0px;">
+			<div class="col" >
+                <textarea rows="3" style="width:100%;" disabled>{{dt.catatan}}</textarea>
+            </div>
+        </div>
+      </div>
+	</div>
+  </ion-content>
+</ion-view>

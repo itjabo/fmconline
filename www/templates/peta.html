@@ -1,0 +1,34 @@
+<ion-view view-title="PETA SITE" >
+<ion-header-bar class="bar-dark" >
+  <h1 class="title">Map</h1>
+</ion-header-bar>
+
+  <ion-content ng-controller="MapCtrl">
+    <div>
+        <!--lat1<span ng-model="lat1" ng-bind="lat1"></span>
+        lat2<span ng-model="lat2" ng-bind="lat2"></span>
+        long1<span ng-model="long1" ng-bind="long1"></span>
+        long2<span  ng-model="long2" ng-bind="long2"></span>-->
+      {{ eror }}</div>
+    <div id="map" data-tap-disabled="true" style="width:100%; height:100%;">
+</div>
+    <!-- <div  data-tap-disabled="true" style="width:100%; height:100%;">
+     <ng-map zoom="14" center={{latlng}}>
+       <marker></marker>
+     </ng-map>
+     <ng-map default-style="true" center="current-location" zoom="12">
+       <info-window position="current-location">
+         <span>Loation found using HTML5.</span>
+   </info-window>
+   </ng-map>
+    </div>-->
+  </ion-content>
+  <ion-footer-bar class="bar-dark">
+    <div class="col col-50">
+      <a ng-click="centerOnMe()" class="button button-icon icon ion-navigate">Find Me</a>
+    </div>
+    <div class="col col-50">
+      <a ng-click="refreshpage()" class="button button-icon icon ion-loop">Refresh</a>
+    </div>
+  </ion-footer-bar>
+</ion-view>

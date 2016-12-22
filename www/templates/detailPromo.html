@@ -1,0 +1,22 @@
+<ion-view view-title="{{toko}}">
+  <ion-content>
+    <div class="bar bar-header bar-assertive">
+      <h1 class="title">08111991874 Point:832</h1>
+    </div>
+    <div class="row"><h1>Browse</h1></div>
+    <div class="row"><h4>{{'('+toko+') '+judul}}</h4></div>
+    <div class="row">
+      <div>
+        <img src={{urlGbr+gbr_promo}} style="width:100%; margin-bottom:0px; padding-bottom:0px;">
+        <ion-item class="item-text-wrap" style="padding:1px 1px 2px 1px; margin-top:-5px;">
+          {{deskripsi}}
+        </ion-item>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <h5>Periode: <strong>{{ start_promo+' s/d '+ end_promo}}</strong></h5>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
